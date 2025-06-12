@@ -22,16 +22,11 @@ class UserAgent:
         self.llm = ChatGroq(
             model_name="llama3-8b-8192",
             api_key=os.getenv("GROQ_API_KEY"),
-            temperature=0
+            temperature=0.2,
         )
 
         self.prompt, self.parser = build_operation_prompt()
-
-        self.llm = ChatGroq(
-            model_name="llama3-8b-8192",
-            api_key=os.getenv("GROQ_API_KEY"),
-            temperature=0.2
-        )
+        self.chain = LLMChain(llm=self.llm, prompt=self.prompt, verbose=True)
 
     def detect_operation(self, user_input: str) -> dict:
         try:
