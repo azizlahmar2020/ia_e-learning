@@ -29,3 +29,6 @@ This graph registers tools from `ChatbotTools`, `CourseTools` and
 `UserTools`. The agent chooses which tool to call using Groq's function
 calling capability and stores conversation history in
 `tool_call_memory.db`.
+
+It also exposes `answer_about_course`, a RAG powered tool that retrieves
+course information from a Qdrant vector store before crafting the reply.
