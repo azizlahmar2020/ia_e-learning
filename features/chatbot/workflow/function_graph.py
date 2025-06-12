@@ -12,6 +12,7 @@ from langchain_core.tools import Tool
 
 from features.chatbot.tools.chatbot_tools import ChatbotTools
 from features.cours_management.tools.cours_tools import CourseTools
+from features.cours_management.tools.course_qa_tools import answer_about_course
 from features.user_management.tools.user_tools import UserTools
 
 
@@ -47,6 +48,7 @@ TOOLS = [
     UserTools.create_user,
     UserTools.update_user,
     UserTools.delete_user,
+    answer_about_course,
 ]
 
 
