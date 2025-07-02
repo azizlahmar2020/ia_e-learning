@@ -2,12 +2,12 @@
 
 import json
 import logging
-import operator
 from typing import TypedDict, Annotated, List, Optional
 from features.cours_management.agents.rag_agent import RAGAgent
 import os
 from langchain_core.messages import HumanMessage
 from langgraph.graph import StateGraph, END
+from langgraph.graph.message import add_messages
 from features.cours_management.memory_course.conversation_memory import ConversationMemory
 
 from features.cours_management.agents.SuggestionAgent import SuggestionAgent
@@ -22,7 +22,7 @@ from features.cours_management.agents.OperationDetectionAgent import OperationDe
 
 # --- Typage de l'état du graphe ---
 class GraphState(TypedDict):
-    messages: Annotated[List[HumanMessage], operator.add]
+    messages: Annotated[List[HumanMessage], add_messages]
     detected_operations: List[dict]
     pending_operations: List[dict]
     results: List[dict]

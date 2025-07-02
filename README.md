@@ -32,3 +32,10 @@ calling capability and stores conversation history in
 
 It also exposes `answer_about_course`, a RAG powered tool that retrieves
 course information from a Qdrant vector store before crafting the reply.
+
+## Basic chatbot graph
+
+`features/chatbot/workflow/basic_chatbot_graph.py` implements the
+[LangGraph best practice](https://langchain-ai.github.io/langgraph/tutorials/get-started/1-build-basic-chatbot/)
+for building a minimal stateful chatbot. It defines a graph with a single
+`chatbot` node and uses `add_messages` to append responses to the state.
