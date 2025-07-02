@@ -1,9 +1,10 @@
 # features/cours_management/workflow/cours_graph.py
 # ──────────────────────────────────────────────────────────────────────────────
-import io, logging, operator
+import io, logging
 from typing import TypedDict, Annotated, List, Optional
 
 from langgraph.graph          import StateGraph, END
+from langgraph.graph.message  import add_messages
 from langchain_core.messages  import HumanMessage, SystemMessage
 from PyPDF2                   import PdfReader
 
@@ -26,7 +27,7 @@ from features.cours_management.memory_course.agent_memory import AgentMemory
 
 # 1. État ─────────────────────────────────────────────────────────────────────
 class GraphState(TypedDict):
-    messages           : Annotated[List[HumanMessage], operator.add]
+    messages           : Annotated[List[HumanMessage], add_messages]
     detected_operations: List[dict]
     pending_operations : List[dict]
     results            : List[dict]

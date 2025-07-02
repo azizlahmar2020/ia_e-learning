@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-import operator
 from typing import List, TypedDict, Annotated
 
 from langgraph.graph import StateGraph, END
+from langgraph.graph.message import add_messages
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langchain_groq import ChatGroq
 from langchain.agents import AgentExecutor, create_openai_functions_agent
@@ -19,7 +19,7 @@ from features.user_management.tools.user_tools import UserTools
 class GraphState(TypedDict):
     """State tracked by the tool calling graph."""
 
-    messages: Annotated[List[HumanMessage], operator.add]
+    messages: Annotated[List[HumanMessage], add_messages]
     results: List[str]
     error: str | None
 
